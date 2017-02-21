@@ -1,0 +1,14 @@
+---
+- name: install mariadb
+  become: true
+  package: "name={{item}} state=present"
+  with_items:
+    - mariadb
+    - mysql-python
+  notify:
+    - init mariadb
+    - restart mariadb
+  tags:
+    - mariadb
+
+- meta: flush_handlers

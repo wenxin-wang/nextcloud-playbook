@@ -1,0 +1,20 @@
+---
+- name: init mariadb
+  become: true
+  command: >-
+    mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  tags:
+    - mariadb
+
+- name: restart mariadb
+  become: true
+  service: name=mariadb state=restarted enabled=true
+  tags:
+    - mariadb
+
+- name: secure mariadb
+  become: true
+  command: >-
+    mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  tags:
+    - mariadb

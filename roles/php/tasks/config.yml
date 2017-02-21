@@ -1,0 +1,6 @@
+---
+- name: copy php config
+  become: true
+  copy: src=php.ini dest=/etc/php/php.ini
+  tags:
+    - php

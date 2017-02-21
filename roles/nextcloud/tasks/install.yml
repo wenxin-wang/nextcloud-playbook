@@ -1,0 +1,8 @@
+---
+- name: install nextcloud
+  become: true
+  package: "name={{item}} state=present"
+  with_items:
+    - nextcloud
+  tags:
+    - nextcloud

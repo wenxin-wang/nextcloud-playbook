@@ -1,0 +1,2 @@
+---
+mysql_root: "{{ lookup('file', instance_dir + '/mysql_root.txt') }}"

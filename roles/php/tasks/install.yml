@@ -1,0 +1,11 @@
+---
+- name: install php
+  become: true
+  package: "name={{item}} state=present"
+  with_items:
+    - php
+    - php-gd
+    - php-intl
+    - php-mcrypt 
+  tags:
+    - php
