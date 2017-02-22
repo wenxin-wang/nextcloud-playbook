@@ -1,0 +1,25 @@
+- name: install fail2ban
+  become: true
+  package: "name={{item}} state=present"
+  with_items:
+    - fail2ban
+  notify:
+    - fail2ban restart
+  tags:
+    - fail2ban
+
+- name: copy nextcloud fail2ban configurations
+  become: true
+  copy: src=nextcloud.conf dest=/etc/fail2ban/filter.d/
+  notify:
+    - fail2ban restart
+  tags:
+    - fail2ban
+
+- name: copy fail2ban configurations
+  become: true
+  copy: src=jail.local dest=/etc/fail2ban/
+  notify:
+    - fail2ban restart
+  tags:
+    - fail2ban

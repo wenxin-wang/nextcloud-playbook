@@ -1,0 +1,22 @@
+---
+- name: install certbot
+  become: true
+  package: "name={{item}} state=present"
+  with_items:
+    - certbot
+  tags:
+    - certbot
+
+- name: ensure directories exists
+  become: true
+  file: name=/etc/letsencrypt state=directory
+  tags:
+    - certbot
+
+- name: install certbot config
+  become: true
+  copy:
+    src: storie.ini
+    dest: /etc/letsencrypt/storie.ini
+  tags:
+    - certbot

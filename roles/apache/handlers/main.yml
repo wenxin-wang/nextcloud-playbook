@@ -1,0 +1,6 @@
+---
+- name: apache restart
+  become: true
+  service: name=httpd enabled=true state=restarted
+  tags:
+    - apache

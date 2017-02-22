@@ -1,0 +1,9 @@
+- include: install.yml
+
+- name: get certs
+  become: true
+  command: certbot -c /etc/letsencrypt/storie.ini -n certonly --keep --agree-tos
+  register: result
+  changed_when: "'no action taken' in result.stderr"
+  tags:
+    - certbot

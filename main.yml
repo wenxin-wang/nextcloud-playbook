@@ -1,7 +1,9 @@
 ---
 - hosts: all
   roles:
-    #- certbot
+    - certbot
     - mariadb
     - php
     - nextcloud
+    - apache
+    - fail2ban

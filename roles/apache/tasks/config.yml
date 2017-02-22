@@ -1,0 +1,8 @@
+---
+- name: copy httpd configs
+  become: true
+  copy: "src=httpd.conf dest=/etc/httpd/conf/"
+  notify:
+    - apache restart
+  tags:
+    - apache

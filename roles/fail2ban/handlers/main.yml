@@ -1,0 +1,6 @@
+---
+- name: fail2ban restart
+  become: true
+  service: "name={{item}} enabled=true state=restarted"
+  with_items:
+    - fail2ban
