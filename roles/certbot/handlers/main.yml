@@ -1,0 +1,4 @@
+---
+- name: systemd reload
+  become: true
+  command: "systemctl daemon-reload"

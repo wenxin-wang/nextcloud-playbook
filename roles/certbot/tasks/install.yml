@@ -20,3 +20,20 @@
     dest: /etc/letsencrypt/storie.ini
   tags:
     - certbot
+
+- name: install renew timer
+  become: true
+  copy: "src={{item}} dest=/etc/systemd/system/"
+  with_items:
+    - certbot.service
+    - certbot.timer
+  notify:
+    - systemd reload
+  tags:
+    - certbot
+
+- name: enable certbot timer
+  become: true
+  service: name=certbot.timer state=started enabled=true
+  tags:
+    - certbot
