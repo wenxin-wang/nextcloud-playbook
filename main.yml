@@ -3,7 +3,7 @@
   roles:
     - certbot
     - mariadb
+    - apache
     - php
     - nextcloud
-    - apache
     - fail2ban

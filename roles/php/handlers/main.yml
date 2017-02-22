@@ -1,0 +1,6 @@
+---
+- name: php-fpm restart
+  become: true
+  service: name=php-fpm enabled=true state=restarted
+  tags:
+    - php-fpm

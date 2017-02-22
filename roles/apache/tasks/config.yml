@@ -1,7 +1,17 @@
 ---
 - name: copy httpd configs
   become: true
-  copy: "src=httpd.conf dest=/etc/httpd/conf/"
+  copy: src=httpd.conf dest=/etc/httpd/conf/
+  notify:
+    - apache restart
+  tags:
+    - apache
+
+- name: copy httpd extra configs
+  become: true
+  copy: "src={{item}} dest=/etc/httpd/conf/extra/"
+  with_items:
+    - ssl-base.conf
   notify:
     - apache restart
   tags:

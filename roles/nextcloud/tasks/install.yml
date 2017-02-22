@@ -6,3 +6,12 @@
     - nextcloud
   tags:
     - nextcloud
+
+- name: ensure nextcloud permission
+  become: true
+  file: "name={{item}} state=directory owner=http group=http"
+  with_items:
+    - "{{nextcloud_root}}/apps"
+    - "{{nextcloud_root}}/data"
+  tags:
+    - nextcloud

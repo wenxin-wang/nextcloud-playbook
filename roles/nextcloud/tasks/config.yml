@@ -1,0 +1,10 @@
+---
+- name: generate nextcloud http site
+  become: true
+  template: "src={{item}} dest=/etc/httpd/conf/extra/"
+  with_items:
+    - nextcloud.conf
+  notify:
+    - apache restart
+  tags:
+    - nextcloud

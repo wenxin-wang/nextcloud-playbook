@@ -1,0 +1,3 @@
+---
+nextcloud_password: "{{ lookup('file', instance_dir + '/nextcloud.txt') }}"
+nextcloud_root: /usr/share/webapps/nextcloud
